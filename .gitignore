@@ -1,3 +1,13 @@
+# Scala project ignores
+recipe_extractor/target/
+recipe_extractor/project/target
+recipe_extractor/.ensime*
+recipe_extractor/.ensime/
+
+# Emacs ignores
+*~
+
+# Python ignores
 *.py[cod]
 
 # C extensions
