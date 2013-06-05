@@ -1,4 +1,6 @@
 
+package com.meanrecipes
+
 import scala.io.Source
 import java.io.File
 import org.htmlcleaner.HtmlCleaner
@@ -32,23 +34,21 @@ class DigestHTML(filePath: String) {
   // Core object. Takes an incoming resource, returns cleaned pieces; should be able to be fed
   // directly into an ML solution.
 
-  val data = loadAndParseFile(filePath)
+  val textHeap = loadAndParseFile(filePath)
 
   def loadAndParseFile(filePath: String) = {
+    // This function... well, ideally will work for all Blogspot blogs. Hrm.
     val turl = "http://orangette.blogspot.com/2013/05/im-feeling-daring.html"
     val cleaner = new HtmlCleaner
     val rootNode = cleaner.clean(new URL(turl).openStream)
-    //val elements = rootNode.getElementsByName("a", true)
-    val elements = rootNode.getAllElementsList(true).toList
-    val unique_elems = elements.foldLeft(Nil: List[Any]) {
-      (acc, next) => if (acc.contains(next)) acc else next :: acc
-    }
-    unique_elems foreach{ item => println("element is: " + item + ".")}
-//    for (element <- elements) {
-//      println(element.getText.toString)
-//    }
-//    val nSpace = rootNode.getNamespaceDeclarations.toMap
-//    nSpace foreach {case (key, value) => {println("At" + key + ", value:"); println(value)}}
+    val elements = rootNode.getElementsByName("div", true)
+    elements.map{ elem =>
+      elem.getAttributeByName("class") match {
+        case "post" | "post-body" => elem.getText.toString.replaceAll("&nbsp;", "")
+        case _ => 
+      }
+    }.toList
+
   }
 
 }
