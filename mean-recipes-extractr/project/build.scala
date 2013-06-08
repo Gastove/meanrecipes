@@ -9,7 +9,7 @@ object MeanRecipesExtractrBuild extends Build {
   val Organization = "com.meanrecipes"
   val Name = "Mean Recipes Extractr"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.0"
+  val ScalaVersion = "2.10.2"
   val ScalatraVersion = "2.2.0"
 
   lazy val project = Project (
@@ -17,7 +17,7 @@ object MeanRecipesExtractrBuild extends Build {
     file("."),
     settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ seq(
       com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*
-    ) ++ Seq(
+    )  ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,

@@ -3,7 +3,7 @@ package com.meanrecipes.extractr
 import org.scalatra._
 import scalate.ScalateSupport
 
-class ScalatraServlet extends MeanRecipesExtractrStack {
+class ExtractrServlet extends MeanRecipesExtractrStack {
 
   get("/") {
     <html>
