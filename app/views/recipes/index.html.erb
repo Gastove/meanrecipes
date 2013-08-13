@@ -1,0 +1,14 @@
+
+<div>
+<table>
+<% @recipes.each do |recipe| %>
+  <tr colspan=2><th><%= recipe.name %></th></tr>
+  <% recipe.ingredients.each do |ingredient| %>
+    <tr><td><%= ingredient.quantity %></td><td><%= ingredient.name %></td>
+  <% end %>
+  <% recipe.directions.order("ordinality ASC").each do |direction| %>
+    <tr><td colspan=2><%= direction.ordinality %><%= direction.text %></td></tr>
+  <% end %>
+<% end %>
+</table>
+</div>
