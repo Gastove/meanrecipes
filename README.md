@@ -1,22 +1,15 @@
 meanrecipes
 ===========
 
-Starting to get this going.
+Starting to get this going -- now, with TWICE as much rails! Whee!
 
 To Do
 ===========
-Wow, uh okay, cool. There are two big pieces to try and get going, just to prove this is even remotely possible;
-1) Connect to Google, query it with a recipe name, and get the raw text of the first N pages loaded in to memory.
-2) This is the hard one: break up the body of a website in to pieces, the separate the "recipe" from everything else. I have... ideas about this. 
 
-More generally, here are things I don't understand:
-1) What's the difference between searching for "Chicken" (the ingredient) and "Chicken" (the finished food)? Which one returns "Chicken Soup"? Both of them?
+Right. This is a Rails app now. That's cool. 
 
-The smaller, yet still important, last piece is:
-3) Can those two parts be hooked together, such that one can feed the other and return a "result"? Surely the answer is yes. Surely.
-
-Notes
-===========
+# TODO One: Learn the Hell out of Rails. 
+# TODO Two: Figure out TODOs 3-n
 
 Part 1: Connect to Google
      Erghm, okay. This should be relatively easy. Here's my thought:
@@ -26,3 +19,34 @@ Part 1: Connect to Google
 
 Part 2: Process the Results
      Okay. I've got an idea. I'm... gonna fuck with this a little. 
+
+General Architecture Notes
+============
+
+The Rails App:
+* Talks to the scala backend via REST api calls.
+  Backend access via environment variable, BACKEND_BASE_URL. Currently set to 'meanrecipes-extractr.herokuapp.com'
+
+Hoooookay. So lets think about this.
+
+We're going to have:
+# A gui (set of views) that allow, at a minimum:
+## User enters search term
+## User gets result
+
+More precisely put:
+# User enters search term
+## Search term passed to extractr via REST API call.
+## Extractr does some pondering
+# Exposed API recieves "item fineshed" callback from extractr, which contains a mongo key, a Postgres lookup, something
+# Rails App diggs model out of storage, parses it, shows it.
+
+So I need, to continue:
+# A test model. (Can be 100% fake, but the exercise of making one could be very good)
+
+The Scala App:
+* Puts results in, lets be honest, probably Mongo, then hits a callback in the Rails app to tell it a result is finished. 
+* This means we need MongoDB.
+* Should be able to hit the frontend
+
+# TODO: Add FRONTEND_BASE_URL to scala app/env.
