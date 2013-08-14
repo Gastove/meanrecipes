@@ -1,14 +1,14 @@
-
 <div>
-<table>
+<table> 
 <% @recipes.each do |recipe| %>
-  <tr colspan=2><th><%= recipe.name %></th></tr>
+  <tr colspan=2><th><%= recipe.recipe_name %></th></tr>
   <% recipe.ingredients.each do |ingredient| %>
-    <tr><td><%= ingredient.quantity %></td><td><%= ingredient.name %></td>
+    <tr><td><%= ingredient.quantity %></td><td><%= ingredient.ingredient_name %></td>
   <% end %>
   <% recipe.directions.order("ordinality ASC").each do |direction| %>
-    <tr><td colspan=2><%= direction.ordinality %><%= direction.text %></td></tr>
+    <tr><td colspan=2><%= direction.ordinality %>:  <%= direction.body %></td></tr>
   <% end %>
+<br>
 <% end %>
 </table>
 </div>

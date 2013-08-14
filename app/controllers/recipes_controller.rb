@@ -2,6 +2,10 @@
 class RecipesController < ApplicationController
 
 
+  def all
+    @recipes = Recipe.find(:all)
+  end
+
   def index
     @recipes = Recipe.all
   end
@@ -15,11 +19,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(
-                         :name => params[:recipe_name]
-                         :ingredients => Ingredients.create(params[:ingredients])
-                         :directions => Directions.create(params[:directions])
-                         )
+    @recipe = Recipe.new(params)
     @recipe.save
   end
 
