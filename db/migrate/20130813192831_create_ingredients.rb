@@ -1,5 +1,5 @@
 class CreateIngredients < ActiveRecord::Migration
-  def change
+  def create
     create_table :ingredients do |t|
       t.string :ingredient_name
       t.string :quantity

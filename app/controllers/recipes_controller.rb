@@ -1,6 +1,7 @@
 
-class RecipesController < ApplicationController
+# Represents a recipe; should be able to show 
 
+class RecipesController < ApplicationController
 
   def all
     @recipes = Recipe.find(:all)
