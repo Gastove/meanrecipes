@@ -90,9 +90,13 @@ Recipe.create(
 ingredients_two = Ingredient.create(test_recipe_two[:ingredients])
 directions_two = Direction.create(test_recipe_two[:directions])
 
-Recipe.create(
-              recipe_name: test_recipe_two[:recipe_name],
-              ingredients: ingredients_two,
-              directions: directions_two
-              )
+Recipe.create_from_hash(test_recipe_two)
+
+# Recipe.create(
+#               recipe_name: test_recipe_two[:recipe_name],
+#               ingredients: ingredients_two,
+#               directions: directions_two
+#               )
+
+
 
