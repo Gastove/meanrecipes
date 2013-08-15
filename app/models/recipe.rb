@@ -3,9 +3,8 @@
 
 class Recipe < ActiveRecord::Base
 
+  attr_accessible :recipe_name
+  validates :recipe_name, presence: true
   has_many :ingredients
   has_many :directions
-  validates :name, :ingredients, :directions, presence: true
-  validates_associated :ingredients, :directions
-
 end
