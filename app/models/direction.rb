@@ -5,6 +5,6 @@ class Direction < ActiveRecord::Base
 
   attr_accessible :body, :ordinality
   belongs_to :recipe
-  validates :body, :ordinality, presence: true
+  validates :body, presence: true
 
 end
