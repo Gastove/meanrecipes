@@ -53,6 +53,11 @@ Meanrecipes::Application.routes.draw do
 
   root :to => 'recipes#index'
 
+  resources :recipes do
+    resources :ingredients
+    resources :directions
+  end
+
   # See how all your routes lay out with "rake routes"
 
 end
