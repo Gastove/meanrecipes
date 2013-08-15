@@ -3,7 +3,8 @@
 
 class Direction < ActiveRecord::Base
 
+  attr_accessible :body, :ordinality
   belongs_to :recipe
-  validates :text, :ordinality
+  validates :body, presence: true
 
 end
