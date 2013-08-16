@@ -8,6 +8,8 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients
   has_many :directions
 
+  # This needs to be DRYed out. Find a Railsy way to do this.
+
   def self.create_from_hash(hash)
     ingredients = Ingredient.create(hash[:ingredients])
     directions = Direction.create(hash[:directions])
